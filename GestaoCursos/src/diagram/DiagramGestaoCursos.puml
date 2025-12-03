@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+@startuml questao02
+
+abstract class Usuario {
+    -String nome
+    -String email
+    +login()
+}
+
+class Aluno extends Usuario {
+    +assistirAula()
+    +emitirCertificado()
+}
+
+class Instrutor extends Usuario {
+    +criarConteudo()
+    +gerenciarNotas()
+}
+
+class Curso {
+    -String titulo
+    -String descricao
+}
+
+class Modulo {
+    -String titulo
+    -int ordem
+}
+
+class Aula {
+    -String titulo
+    -String urlVideo
+    -int duracaoMinutos
+}
+
+class Matricula {
+    -Date dataInicio
+    -Float progresso
+    +concluirCurso()
+}
+
+Curso "1" *-- "*" Modulo
+Modulo "1" *-- "*" Aula
+Aluno "1" --> "*" Matricula
+Matricula "1" --> "*" Curso
+
+
+@enduml
